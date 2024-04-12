@@ -1,4 +1,4 @@
-module.exports = (env) => ({
+module.exports = ({env}) => ({
   'preview-button': {
     config: {
       contentTypes: [
@@ -15,7 +15,6 @@ module.exports = (env) => ({
             query: {
               type: 'page',
               slug: '{slug}',
-              secret: env( 'STRAPI_PREVIEW_SECRET' ),
             },
           },
           published: {
