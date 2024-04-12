@@ -512,6 +512,12 @@ export interface PluginContentReleasesRelease extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     releasedAt: Attribute.DateTime;
+    scheduledAt: Attribute.DateTime;
+    timezone: Attribute.String;
+    status: Attribute.Enumeration<
+      ['ready', 'blocked', 'failed', 'done', 'empty']
+    > &
+      Attribute.Required;
     actions: Attribute.Relation<
       'plugin::content-releases.release',
       'oneToMany',
@@ -566,6 +572,7 @@ export interface PluginContentReleasesReleaseAction
       'manyToOne',
       'plugin::content-releases.release'
     >;
+    isEntryValid: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -938,6 +945,30 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiCssCss extends Schema.CollectionType {
+  collectionName: 'csses';
+  info: {
+    singularName: 'css';
+    pluralName: 'csses';
+    displayName: 'css';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    classname: Attribute.UID;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::css.css', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::css.css', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Schema.SingleType {
   collectionName: 'globals';
   info: {
@@ -971,6 +1002,385 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
   };
 }
 
+export interface ApiGroupeGroupe extends Schema.CollectionType {
+  collectionName: 'groupes';
+  info: {
+    singularName: 'groupe';
+    pluralName: 'groupes';
+    displayName: 'groupe';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    groupname: Attribute.UID;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::groupe.groupe',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::groupe.groupe',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomepageHomepage extends Schema.SingleType {
+  collectionName: 'homepages';
+  info: {
+    singularName: 'homepage';
+    pluralName: 'homepages';
+    displayName: 'Homepage';
+    name: 'homepage';
+    description: '';
+  };
+  options: {
+    increments: true;
+    timestamps: true;
+    draftAndPublish: false;
+  };
+  attributes: {
+    dynamicZone: Attribute.DynamicZone<
+      [
+        'composants.bloc-arguments',
+        'composants.bloc-departements',
+        'composants.bloc-expand',
+        'composants.bloc-iframe',
+        'composants.bloc-offres',
+        'composants.bloc-pub-recurrent',
+        'composants.bloc-rating-eleves',
+        'composants.blocvideo',
+        'composants.cta',
+        'composants.external-links',
+        'composants.google-maps-search-bar',
+        'composants.nav-item',
+        'composants.simulateur',
+        'composants.slider',
+        'composants.titre-texte-image-lien',
+        'composants.toggle',
+        'shared.seo'
+      ]
+    >;
+    css: Attribute.Relation<
+      'api::homepage.homepage',
+      'oneToMany',
+      'api::css.css'
+    >;
+    parent: Attribute.Relation<
+      'api::homepage.homepage',
+      'oneToOne',
+      'api::page.page'
+    >;
+    breadcrumbTitle: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::homepage.homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::homepage.homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPagePage extends Schema.CollectionType {
+  collectionName: 'pages';
+  info: {
+    singularName: 'page';
+    pluralName: 'pages';
+    displayName: 'page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    slug: Attribute.UID & Attribute.Required;
+    dynamicZone: Attribute.DynamicZone<
+      [
+        'composants.bloc-arguments',
+        'composants.bloc-departements',
+        'composants.bloc-expand',
+        'composants.bloc-iframe',
+        'composants.bloc-offres',
+        'composants.bloc-pub-recurrent',
+        'composants.bloc-rating-eleves',
+        'composants.blocvideo',
+        'composants.cta',
+        'composants.external-links',
+        'composants.google-maps-search-bar',
+        'composants.lottie-player',
+        'composants.nav-item',
+        'composants.simulateur',
+        'composants.slider',
+        'composants.titre-texte-image-lien',
+        'composants.toggle',
+        'shared.seo',
+        'composants.bloc-bvm-bva'
+      ]
+    >;
+    css: Attribute.Relation<'api::page.page', 'oneToMany', 'api::css.css'>;
+    parent: Attribute.Relation<'api::page.page', 'oneToOne', 'api::page.page'>;
+    breadcrumbTitle: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPartenairePartenaire extends Schema.CollectionType {
+  collectionName: 'partenaires';
+  info: {
+    singularName: 'partenaire';
+    pluralName: 'partenaires';
+    displayName: 'partenaires';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    slug: Attribute.UID & Attribute.Required;
+    name: Attribute.String & Attribute.Required;
+    codepromo: Attribute.String & Attribute.Required;
+    template: Attribute.Enumeration<
+      [
+        'TemplatePackPermis',
+        'TemplateCFA',
+        'TemplateLyceePro',
+        'TemplatePackCode',
+        'TemplateCodePack'
+      ]
+    >;
+    image: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::partenaire.partenaire',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::partenaire.partenaire',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPubPub extends Schema.CollectionType {
+  collectionName: 'pubs';
+  info: {
+    singularName: 'pub';
+    pluralName: 'pubs';
+    displayName: 'Pub';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    type: Attribute.Enumeration<['code', 'driving', 'both']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'both'>;
+    title: Attribute.String & Attribute.Required;
+    pub: Attribute.Component<'composants.titre-texte-image-lien'> &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::pub.pub', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::pub.pub', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRedirectRedirect extends Schema.CollectionType {
+  collectionName: 'redirects';
+  info: {
+    singularName: 'redirect';
+    pluralName: 'redirects';
+    displayName: 'Redirect';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    source: Attribute.String;
+    destination: Attribute.String;
+    code: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::redirect.redirect',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::redirect.redirect',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiStrapiDynamicVarStrapiDynamicVar
+  extends Schema.CollectionType {
+  collectionName: 'strapi_dynamic_vars';
+  info: {
+    singularName: 'strapi-dynamic-var';
+    pluralName: 'strapi-dynamic-vars';
+    displayName: 'StrapiDynamicVars';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    key: Attribute.UID & Attribute.Required;
+    value: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::strapi-dynamic-var.strapi-dynamic-var',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::strapi-dynamic-var.strapi-dynamic-var',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTemplateTemplate extends Schema.CollectionType {
+  collectionName: 'templates';
+  info: {
+    singularName: 'template';
+    pluralName: 'templates';
+    displayName: 'Templates';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    dynamicZone: Attribute.DynamicZone<
+      [
+        'composants.bloc-arguments',
+        'composants.bloc-departements',
+        'composants.bloc-expand',
+        'composants.bloc-iframe',
+        'composants.bloc-offres',
+        'composants.bloc-pub-recurrent',
+        'composants.bloc-rating-eleves',
+        'composants.blocvideo',
+        'composants.cta',
+        'composants.external-link',
+        'composants.external-links',
+        'composants.google-maps-search-bar',
+        'composants.lottie-player',
+        'composants.nav-item',
+        'composants.simulateur',
+        'composants.slider',
+        'composants.titre-texte-image-lien',
+        'composants.toggle',
+        'shared.seo'
+      ]
+    >;
+    name: Attribute.UID & Attribute.Required;
+    css: Attribute.Relation<
+      'api::template.template',
+      'oneToMany',
+      'api::css.css'
+    >;
+    page: Attribute.Relation<
+      'api::template.template',
+      'oneToOne',
+      'api::page.page'
+    >;
+    breadcrumbTitle: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::template.template',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::template.template',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiWriterWriter extends Schema.CollectionType {
+  collectionName: 'writers';
+  info: {
+    singularName: 'writer';
+    pluralName: 'writers';
+    displayName: 'Writer';
+    name: 'writer';
+  };
+  options: {
+    increments: true;
+    timestamps: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    picture: Attribute.Media;
+    email: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::writer.writer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::writer.writer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -993,7 +1403,17 @@ declare module '@strapi/types' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::css.css': ApiCssCss;
       'api::global.global': ApiGlobalGlobal;
+      'api::groupe.groupe': ApiGroupeGroupe;
+      'api::homepage.homepage': ApiHomepageHomepage;
+      'api::page.page': ApiPagePage;
+      'api::partenaire.partenaire': ApiPartenairePartenaire;
+      'api::pub.pub': ApiPubPub;
+      'api::redirect.redirect': ApiRedirectRedirect;
+      'api::strapi-dynamic-var.strapi-dynamic-var': ApiStrapiDynamicVarStrapiDynamicVar;
+      'api::template.template': ApiTemplateTemplate;
+      'api::writer.writer': ApiWriterWriter;
     }
   }
 }
