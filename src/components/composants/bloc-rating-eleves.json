@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_composants_bloc_rating_eleves",
+  "info": {
+    "displayName": "BlocRatingEleves",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "titre": {
+      "type": "string"
+    },
+    "groupe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::groupe.groupe"
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    }
+  }
+}

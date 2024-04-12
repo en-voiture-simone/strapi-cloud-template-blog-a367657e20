@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_composants_slider",
+  "info": {
+    "displayName": "Slider",
+    "icon": "arrows-alt-h"
+  },
+  "options": {},
+  "attributes": {
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "composants.titre-texte-image-lien"
+    },
+    "groupe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::groupe.groupe"
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    }
+  }
+}

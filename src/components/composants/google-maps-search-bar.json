@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_composants_google_maps_search_bars",
+  "info": {
+    "displayName": "GoogleMapsSearchBar",
+    "icon": "map-marker-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "placeholder": {
+      "type": "string"
+    },
+    "buttonvalue": {
+      "type": "string"
+    },
+    "groupe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::groupe.groupe"
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    }
+  }
+}

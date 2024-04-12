@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "dynamicZone": {
+      "type": "dynamiczone",
+      "components": [
+        "composants.bloc-arguments",
+        "composants.bloc-departements",
+        "composants.bloc-expand",
+        "composants.bloc-iframe",
+        "composants.bloc-offres",
+        "composants.bloc-pub-recurrent",
+        "composants.bloc-rating-eleves",
+        "composants.blocvideo",
+        "composants.cta",
+        "composants.external-links",
+        "composants.google-maps-search-bar",
+        "composants.lottie-player",
+        "composants.nav-item",
+        "composants.simulateur",
+        "composants.slider",
+        "composants.titre-texte-image-lien",
+        "composants.toggle",
+        "shared.seo",
+        "composants.bloc-bvm-bva"
+      ]
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "breadcrumbTitle": {
+      "type": "string"
+    }
+  }
+}

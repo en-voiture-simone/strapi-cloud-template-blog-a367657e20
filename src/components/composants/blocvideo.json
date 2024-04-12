@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_composants_blocvideos",
+  "info": {
+    "displayName": "blocvideo",
+    "icon": "photo-video",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text1": {
+      "type": "string"
+    },
+    "text2": {
+      "type": "string"
+    },
+    "embed": {
+      "type": "string"
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    },
+    "ordonnancement": {
+      "type": "enumeration",
+      "enum": [
+        "Texte d'abord",
+        "Vidéo d'abord"
+      ],
+      "default": "Texte d'abord"
+    },
+    "blocID": {
+      "type": "string",
+      "unique": true
+    },
+    "apercu": {
+      "type": "string"
+    },
+    "texte": {
+      "type": "richtext"
+    }
+  }
+}

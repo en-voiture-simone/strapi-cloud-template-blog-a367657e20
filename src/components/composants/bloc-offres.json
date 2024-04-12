@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_composants_bloc_offres",
+  "info": {
+    "displayName": "BlocOffres",
+    "icon": "piggy-bank"
+  },
+  "options": {},
+  "attributes": {
+    "toggle": {
+      "type": "component",
+      "repeatable": false,
+      "component": "composants.toggle"
+    },
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "composants.titre-texte-image-lien"
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    }
+  }
+}

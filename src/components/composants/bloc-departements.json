@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_composants_bloc_departements",
+  "info": {
+    "displayName": "BlocDepartements",
+    "icon": "city",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "titre": {
+      "type": "string"
+    },
+    "groupe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::groupe.groupe"
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    }
+  }
+}

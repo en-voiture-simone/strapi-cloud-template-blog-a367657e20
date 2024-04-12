@@ -1,0 +1,50 @@
+{
+  "collectionName": "components_composants_ctas",
+  "info": {
+    "displayName": "cta",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "texte": {
+      "type": "string"
+    },
+    "url": {
+      "type": "text",
+      "default": "/"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "link",
+        "button",
+        "button_white",
+        "button_light",
+        "button_full_width"
+      ],
+      "default": "link"
+    },
+    "target": {
+      "type": "enumeration",
+      "enum": [
+        "_self",
+        "_blank"
+      ],
+      "default": "_self"
+    },
+    "idAncre": {
+      "type": "string"
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    }
+  }
+}

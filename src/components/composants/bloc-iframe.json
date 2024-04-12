@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_composants_bloc_iframes",
+  "info": {
+    "displayName": "BlocIframe",
+    "icon": "window-maximize",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    },
+    "groupe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::groupe.groupe"
+    }
+  }
+}

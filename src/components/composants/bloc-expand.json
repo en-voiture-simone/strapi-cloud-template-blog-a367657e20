@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_composants_bloc_expands",
+  "info": {
+    "displayName": "BlocExpand",
+    "icon": "arrows-alt-v"
+  },
+  "options": {},
+  "attributes": {
+    "titre": {
+      "type": "string"
+    },
+    "groupe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::groupe.groupe"
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    },
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "composants.titre-texte-image-lien"
+    },
+    "withMicroData": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

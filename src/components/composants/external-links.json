@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_composants_external_links",
+  "info": {
+    "displayName": "ExternalLinks",
+    "icon": "external-link-alt"
+  },
+  "options": {},
+  "attributes": {
+    "groupe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::groupe.groupe"
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    },
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "composants.external-link"
+    }
+  }
+}

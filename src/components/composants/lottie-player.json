@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_composants_lottie_players",
+  "info": {
+    "displayName": "LottiePlayer",
+    "icon": "caret-square-right",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "lottieType": {
+      "type": "enumeration",
+      "enum": [
+        "code",
+        "landing",
+        "permis"
+      ]
+    },
+    "loop": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

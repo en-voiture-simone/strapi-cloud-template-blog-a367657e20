@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pubs",
+  "info": {
+    "singularName": "pub",
+    "pluralName": "pubs",
+    "displayName": "Pub",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "code",
+        "driving",
+        "both"
+      ],
+      "required": true,
+      "default": "both"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "pub": {
+      "type": "component",
+      "repeatable": false,
+      "component": "composants.titre-texte-image-lien",
+      "required": true
+    }
+  }
+}

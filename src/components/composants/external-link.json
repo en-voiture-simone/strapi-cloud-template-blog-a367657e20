@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_composants_external_link",
+  "info": {
+    "displayName": "ExternalLink",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "texte": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "domaine": {
+      "type": "string"
+    },
+    "publicationdate": {
+      "type": "string"
+    }
+  }
+}

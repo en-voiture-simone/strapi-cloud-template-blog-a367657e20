@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_composants_bloc_arguments",
+  "info": {
+    "displayName": "BlocArguments",
+    "icon": "th-list"
+  },
+  "options": {},
+  "attributes": {
+    "texte": {
+      "type": "richtext"
+    },
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "composants.titre-texte-image-lien"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "composants.cta"
+    },
+    "groupe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::groupe.groupe"
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    }
+  }
+}

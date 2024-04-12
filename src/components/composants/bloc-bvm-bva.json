@@ -1,0 +1,69 @@
+{
+  "collectionName": "components_composants_bloc_bvm_bva",
+  "info": {
+    "displayName": "BlocBVMBVA",
+    "icon": "money-check"
+  },
+  "options": {},
+  "attributes": {
+    "titre": {
+      "type": "string"
+    },
+    "titleType": {
+      "type": "enumeration",
+      "enum": [
+        "noTitle",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6"
+      ],
+      "default": "h3"
+    },
+    "toggle": {
+      "type": "component",
+      "repeatable": false,
+      "component": "composants.toggle"
+    },
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "composants.titre-texte-image-lien"
+    },
+    "imageBVM": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "imageAltBVM": {
+      "type": "string"
+    },
+    "imageBVA": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "imageAltBVA": {
+      "type": "string"
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    }
+  }
+}

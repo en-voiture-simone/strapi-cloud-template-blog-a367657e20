@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "partenaires",
+  "info": {
+    "singularName": "partenaire",
+    "pluralName": "partenaires",
+    "displayName": "partenaires",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "codepromo": {
+      "type": "string",
+      "required": true
+    },
+    "template": {
+      "type": "enumeration",
+      "enum": [
+        "TemplatePackPermis",
+        "TemplateCFA",
+        "TemplateLyceePro",
+        "TemplatePackCode",
+        "TemplateCodePack"
+      ]
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "audios",
+        "videos"
+      ]
+    }
+  }
+}

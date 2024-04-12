@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_composants_nav_items",
+  "info": {
+    "displayName": "NavBuilder",
+    "icon": "sitemap",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "groupe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::groupe.groupe"
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    },
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "composants.cta"
+    },
+    "withMicroData": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepages",
+  "info": {
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "Homepage",
+    "name": "homepage",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "dynamicZone": {
+      "type": "dynamiczone",
+      "components": [
+        "composants.bloc-arguments",
+        "composants.bloc-departements",
+        "composants.bloc-expand",
+        "composants.bloc-iframe",
+        "composants.bloc-offres",
+        "composants.bloc-pub-recurrent",
+        "composants.bloc-rating-eleves",
+        "composants.blocvideo",
+        "composants.cta",
+        "composants.external-links",
+        "composants.google-maps-search-bar",
+        "composants.nav-item",
+        "composants.simulateur",
+        "composants.slider",
+        "composants.titre-texte-image-lien",
+        "composants.toggle",
+        "shared.seo"
+      ]
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "breadcrumbTitle": {
+      "type": "string"
+    }
+  }
+}

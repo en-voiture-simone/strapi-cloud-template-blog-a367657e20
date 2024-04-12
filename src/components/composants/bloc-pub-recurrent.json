@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_composants_bloc_pub_recurrents",
+  "info": {
+    "displayName": "BlocPubRecurrent",
+    "icon": "ad",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "code",
+        "driving",
+        "both"
+      ],
+      "required": true,
+      "default": "both"
+    },
+    "pub": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pub.pub"
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_composants_toggles",
+  "info": {
+    "displayName": "Toggle",
+    "icon": "toggle-on"
+  },
+  "options": {},
+  "attributes": {
+    "text1": {
+      "type": "string",
+      "required": true
+    },
+    "value1": {
+      "type": "string",
+      "required": true
+    },
+    "text2": {
+      "type": "string",
+      "required": true
+    },
+    "value2": {
+      "type": "string",
+      "required": true
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    }
+  }
+}

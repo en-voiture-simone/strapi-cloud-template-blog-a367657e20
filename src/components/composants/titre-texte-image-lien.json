@@ -1,0 +1,83 @@
+{
+  "collectionName": "components_composants_titre_texte_image_liens",
+  "info": {
+    "displayName": "TitreTexteImageLien",
+    "icon": "address-card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "titre": {
+      "type": "string"
+    },
+    "texte": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "imageAlt": {
+      "type": "string"
+    },
+    "lottiePlayer": {
+      "type": "component",
+      "repeatable": false,
+      "component": "composants.lottie-player"
+    },
+    "groupe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::groupe.groupe"
+    },
+    "css": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::css.css"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "composants.cta"
+    },
+    "ordonnancement": {
+      "type": "enumeration",
+      "enum": [
+        "Texte d'abord",
+        "Image d'abord"
+      ],
+      "default": "Texte d'abord"
+    },
+    "blocID": {
+      "type": "string",
+      "unique": false
+    },
+    "titleType": {
+      "type": "enumeration",
+      "enum": [
+        "noTitle",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6"
+      ],
+      "default": "h2"
+    },
+    "isAnchor": {
+      "type": "boolean",
+      "default": false
+    },
+    "anchorTitle": {
+      "type": "string"
+    }
+  }
+}
